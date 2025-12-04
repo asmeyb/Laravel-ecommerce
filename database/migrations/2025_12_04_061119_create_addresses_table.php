@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('postal_code');
             $table->string('country')->default('US');
             $table->boolean('is_default')->default(false);
-            $table->enum('type',['shipping','billing','both'])->default('shipping');
+            $table->enum('type', ['shipping', 'billing', 'both'])->default('shipping');
             $table->timestamps();
         });
     }
