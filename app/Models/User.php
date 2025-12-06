@@ -3,21 +3,21 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Filament\Forms\Components\Builder;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
+use Illuminate\Support\Str;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
+use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Filament\Panel;
+use Spatie\Permission\Traits\HasRoles;
 
-
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, TwoFactorAuthenticatable;
+    use HasFactory, Notifiable, TwoFactorAuthenticatable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -70,24 +70,16 @@ class User extends Authenticatable implements FilamentUser
             ->implode('');
     }
 
-    // Local Scope
+    // local scope
     #[Scope()]
-    public function active(Builder $builder)
-    {
-        $builder->where('is_active', true);
+    public function active(Builder $builder){
+        $builder->where('is_active',true);
     }
 
-    // Relationships
-
-    public function orderStatusHistories()
-    {
+    //relationship
+    public function orderStatusHistories(){
         return $this->hasMany(OrderStatusHistory::class);
     }
 
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
-    }
-
-
+    
 }
