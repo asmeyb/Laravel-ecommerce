@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Filament\Forms\Components\Builder;
 use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 
 class Coupon extends Model
 {
+    use HasFactory, Notifiable;
     protected $fillable = [
         'code', 'type', 'value', 'minimum_order_value', 'maximum_discount',
         'usage_limit', 'usage_limit_per_customer', 'starts_at', 'expires_at', 'is_active'

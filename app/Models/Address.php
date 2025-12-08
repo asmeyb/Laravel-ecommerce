@@ -5,9 +5,13 @@ namespace App\Models;
 use Filament\Forms\Components\Builder;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Address extends Model
 {
+    use HasFactory, Notifiable;
     protected $fillable = [
         'customer_id','full_name',
         'phone', 'address_line_1', 'address_line_2',

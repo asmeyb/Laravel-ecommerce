@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Filament\Forms\Components\Builder;
 use Illuminate\Database\Eloquent\Attributes\Scope;
@@ -10,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Brand extends Model
 {
+    use HasFactory, Notifiable;
     protected $fillable = [
         'name', 'slug', 'description', 'logo', 'website', 'is_active', 'sort_order'
     ];

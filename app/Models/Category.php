@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Filament\Forms\Components\Builder;
 use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 
 class Category extends Model
 {
+    use HasFactory, Notifiable;
     protected $fillable = [
         'name', 'slug', 'description',
         'image','is_active','sort_order', 'meta_title',
