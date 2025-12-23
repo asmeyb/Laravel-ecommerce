@@ -2,6 +2,7 @@
 
 use App\Livewire\Customer\Dashboard;
 use App\Livewire\Customer\OrderDetails;
+use App\Livewire\HomePage;
 use App\Livewire\Orders;
 use App\Livewire\ProductListing;
 use App\Livewire\Settings\Appearance;
@@ -11,9 +12,7 @@ use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', HomePage::class)->name('home');
 
 Route::get('products', ProductListing::class)->name('products.index');
 
