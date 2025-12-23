@@ -8,6 +8,6 @@ class CartIcon extends Component
 {
     public function render()
     {
-        return view('livewire.cart-icon');
+        return view('livewire.cart-icon')->layout('components.layouts.front-end-layout');
     }
 }

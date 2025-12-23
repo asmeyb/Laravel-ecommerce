@@ -8,6 +8,6 @@ class ProductListing extends Component
 {
     public function render()
     {
-        return view('livewire.product-listing');
+        return view('livewire.product-listing')->layout('components.layouts.front-end-layout');
     }
 }
